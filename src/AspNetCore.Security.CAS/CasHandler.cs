@@ -46,6 +46,8 @@ namespace AspNetCore.Security.CAS
             //     return HandleRequestResult.Fail("Correlation failed.");
             // }
 
+
+
             var casTicket = query["ticket"];
             if (string.IsNullOrEmpty(casTicket))
             {
@@ -105,7 +107,7 @@ namespace AspNetCore.Security.CAS
                 scheme = "https";
             }
 
-            var returnTo = $"{scheme}://{host}/bb{Request.PathBase}{Options.CallbackPath}?state={Uri.EscapeDataString(state)}";
+            var returnTo = $"{scheme}://{host}{Request.PathBase}{Options.CallbackPath}?state={Uri.EscapeDataString(state)}";
 
             return Options.EscapeServiceString ? Uri.EscapeDataString(returnTo) : returnTo;
         }
