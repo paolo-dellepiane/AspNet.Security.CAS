@@ -41,10 +41,10 @@ namespace AspNetCore.Security.CAS
             }
 
             // OAuth2 10.12 CSRF
-            if (!ValidateCorrelationId(properties))
-            {
-                return HandleRequestResult.Fail("Correlation failed.");
-            }
+            // if (!ValidateCorrelationId(properties))
+            // {
+            //     return HandleRequestResult.Fail("Correlation failed.");
+            // }
 
             var casTicket = query["ticket"];
             if (string.IsNullOrEmpty(casTicket))
@@ -105,7 +105,7 @@ namespace AspNetCore.Security.CAS
                 scheme = "https";
             }
 
-            var returnTo = $"{scheme}://{host}/be{Request.PathBase}{Options.CallbackPath}?state={Uri.EscapeDataString(state)}";
+            var returnTo = $"{scheme}://{host}/bb{Request.PathBase}{Options.CallbackPath}?state={Uri.EscapeDataString(state)}";
 
             return Options.EscapeServiceString ? Uri.EscapeDataString(returnTo) : returnTo;
         }
