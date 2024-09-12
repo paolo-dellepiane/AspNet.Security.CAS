@@ -105,7 +105,7 @@ namespace AspNetCore.Security.CAS
                 scheme = "https";
             }
 
-            var returnTo = $"{scheme}://{host}{Request.PathBase}{Options.CallbackPath}?state={Uri.EscapeDataString(state)}";
+            var returnTo = $"{scheme}://{host}/be{Request.PathBase}{Options.CallbackPath}?state={Uri.EscapeDataString(state)}";
 
             return Options.EscapeServiceString ? Uri.EscapeDataString(returnTo) : returnTo;
         }
